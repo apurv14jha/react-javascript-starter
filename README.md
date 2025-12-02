@@ -5,7 +5,7 @@ Minimal React 18 starter template powered by Webpack 5 and Babel, with dev serve
 ## Requirements
 
 - Node.js 18 or later
-- React 18 or later (installed via `npm install react react-dom`)
+- npm for installing dependencies (React and ReactDOM are already listed in `package.json` and are installed via `npm install`).
 
 This template uses the React 18 `createRoot` API from `react-dom/client`.
 
@@ -15,7 +15,7 @@ This template uses the React 18 `createRoot` API from `react-dom/client`.
 - Webpack 5 with asset modules for images
 - Babel with `@babel/preset-env` and `@babel/preset-react` (automatic runtime)
 - Shared browser targets via `.browserslistrc`
-- Development server with hot module replacement on port 3000
+- Development server on port 3000 (supports CSS hot reload; JavaScript changes trigger a full page reload unless React Refresh or module `accept` handlers are added)
 - Source maps (`eval-source-map` in development, `source-map` in production)
   - Public folder handling (favicon, logo, and other static files)
   - Minimal global CSS example
@@ -47,7 +47,7 @@ The production files will be generated in the `dist` folder.
 
 ## Scripts
 
-- `npm start` – Starts Webpack Dev Server in development mode with hot reloading and `eval-source-map`.
+- `npm start` – Starts Webpack Dev Server in development mode with fast CSS hot reloading and `eval-source-map`; JavaScript edits currently reload the page.
 - `npm run build` – Builds the project in production mode, outputting optimized bundles and source maps to the `dist` folder.
 
 ## Project Structure
@@ -102,7 +102,7 @@ This configuration defines which browsers are supported and is used by Babel and
 - Image rule with `type: "asset/resource"` – Handles imported images from `src`, emitting them to `dist` and returning their URLs.
 - `HtmlWebpackPlugin` + `public/index.html` – Uses a template HTML file and injects the final bundle.
 - `CopyWebpackPlugin` – Copies all assets from `public` into `dist` (except `index.html`).
-- `devServer` with `open`, `hot`, and `historyApiFallback` – Provides a comfortable SPA development environment.
+- `devServer` with `open`, `hot`, and `historyApiFallback` – Provides a comfortable SPA development environment; without React Refresh or `module.hot.accept`, JavaScript edits trigger full reloads.
 
 ### Assets
 
