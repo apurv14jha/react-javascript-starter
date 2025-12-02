@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  background: lightblue;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
