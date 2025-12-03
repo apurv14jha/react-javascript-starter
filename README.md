@@ -17,9 +17,8 @@ This template uses the React 18 `createRoot` API from `react-dom/client`.
 - Shared browser targets via `.browserslistrc`
 - Development server on port 3000 (CSS updates hot reload; JavaScript changes currently trigger a full page reload unless React Refresh or module `accept` handlers are added)
 - Source maps (`eval-source-map` in development, `source-map` in production)
-  - Public folder handling (favicon, logo, and other static files)
-  - Minimal global CSS example
-  - Demonstrates both public-path assets (e.g., `/logo.svg`) and imported assets processed by Webpack asset modules
+- Public folder passthrough for any assets you add (favicons, logos, etc.)
+- Minimal global CSS example
 
 ## Getting Started
 
@@ -55,8 +54,6 @@ The production files will be generated in the `dist` folder.
 ```
 public/
   index.html           # HTML template used by HtmlWebpackPlugin
-  favicon.svg          # Text-based favicon for the browser tab
-  logo.svg             # Example logo used by the demo App
 src/
   App.js               # Root React component
   App.css              # Sample global styles
@@ -71,7 +68,7 @@ package.json           # Scripts, dependencies, metadata
 ## What to Change for Each New Project
 
 - Update `package.json` metadata: `name`, `description`, `author`, and `license` (if needed).
-- Update the HTML title and assets in `public/index.html`, and replace `favicon.svg` and `logo.svg`.
+- Update the HTML title in `public/index.html`, and add your own favicon/logo assets in `public/`.
 - Customize the root component by replacing the contents of `src/App.js` with your own UI.
 - (Optional) Change the dev server port in `webpack.config.js` under `devServer.port`.
 
@@ -106,9 +103,9 @@ This configuration defines which browsers are supported and is used by Babel and
 
 ### Assets
 
-- You can reference static assets from `public/` with absolute paths such as `/logo.svg`. These files are copied as-is to `dist` by `copy-webpack-plugin`.
-- The template ships text-based assets (like `.svg`) by default to avoid binary files in version control; `.ico` files are ignored via `.gitignore`.
-- Alternatively, import assets from `src/` (for example, `import logo from "./logo.svg";`). Webpack's `asset/resource` rule emits the file to `dist` and returns a URL that you can use in JSX.
+- Place static assets in `public/` and reference them with absolute paths such as `/favicon.svg`. These files are copied as-is to `dist` by `copy-webpack-plugin`.
+- Alternatively, import assets from `src/` (for example, `import imageUrl from "./asset.svg";`). Webpack's `asset/resource` rule emits the file to `dist` and returns a URL usable in JSX.
+- No sample images are bundled; add your own assets to `public/` or `src/` as needed. `.ico` files are ignored via `.gitignore`.
 
 ### Devtool rationale
 
