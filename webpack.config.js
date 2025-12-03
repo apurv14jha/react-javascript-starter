@@ -40,7 +40,12 @@ module.exports = (env, argv) => {
       }),
       new CopyWebpackPlugin({
         patterns: [
-          { from: "public", to: ".", globOptions: { ignore: ["**/index.html"] } },
+          {
+            from: path.resolve(__dirname, "public"),
+            to: ".",
+            globOptions: { ignore: ["**/index.html"] },
+            noErrorOnMissing: true, // allow running with no extra public assets present
+          },
         ],
       }),
     ],
