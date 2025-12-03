@@ -59,7 +59,9 @@ module.exports = (env, argv) => {
       !isProd && new ReactRefreshWebpackPlugin(),
     ].filter(Boolean),
     devServer: {
-      static: "./dist",
+      static: {
+        directory: path.resolve(__dirname, "dist"),
+      },
       port: 3000,
       open: true,
       hot: true,
